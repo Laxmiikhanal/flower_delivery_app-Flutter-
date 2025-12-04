@@ -10,7 +10,6 @@ class FastDeliveryPage extends StatelessWidget {
         width: double.infinity,
         height: double.infinity,
 
-        // SAME background image as other screens
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/Background.image.png"),
@@ -45,7 +44,7 @@ class FastDeliveryPage extends StatelessWidget {
                     vertical: 28,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.96),
+                    color: Colors.white, // solid white card
                     borderRadius: BorderRadius.circular(32),
                     boxShadow: [
                       BoxShadow(
@@ -59,26 +58,7 @@ class FastDeliveryPage extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      // small label
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 12, vertical: 4),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFFFEBF5),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: const Text(
-                          "DELIVERY",
-                          style: TextStyle(
-                            fontSize: 11,
-                            letterSpacing: 1.4,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.pinkAccent,
-                          ),
-                        ),
-                      ),
-
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 8),
 
                       const Text(
                         "Fast Flower\nDelivery",
@@ -98,7 +78,7 @@ class FastDeliveryPage extends StatelessWidget {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.black54,
-                          fontSize: 13,
+                          fontSize: 15,
                           height: 1.4,
                         ),
                       ),
@@ -117,7 +97,7 @@ class FastDeliveryPage extends StatelessWidget {
                           );
                         },
                         child: Image.asset(
-                          "assets/images/image5.jpg",   // <-- your delivery image
+                          "assets/images/image5.jpg", // your delivery image
                           height: 170,
                         ),
                       ),
@@ -144,7 +124,7 @@ class FastDeliveryPage extends StatelessWidget {
                               BoxShadow(
                                 color: Colors.pinkAccent.withOpacity(0.45),
                                 blurRadius: 18,
-                                offset: Offset(0, 10),
+                                offset: const Offset(0, 10),
                               ),
                             ],
                           ),
@@ -153,7 +133,7 @@ class FastDeliveryPage extends StatelessWidget {
                               "Get Started",
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 17,
+                                fontSize: 20,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -163,17 +143,6 @@ class FastDeliveryPage extends StatelessWidget {
 
                       const SizedBox(height: 12),
 
-                      const Text(
-                        "Fast delivery within minutes!",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.black45,
-                          fontSize: 11,
-                        ),
-                      ),
-
-                      const SizedBox(height: 16),
-
                       // Page indicator — third dot active
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -182,7 +151,7 @@ class FastDeliveryPage extends StatelessWidget {
                           SizedBox(width: 6),
                           _PageDot(isActive: false),
                           SizedBox(width: 6),
-                          _PageDot(isActive: true), // third active
+                          _PageDot(isActive: true), 
                         ],
                       ),
                     ],

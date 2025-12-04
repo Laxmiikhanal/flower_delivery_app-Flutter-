@@ -20,7 +20,7 @@ class RegisterPage extends StatelessWidget {
           // OVERLAY
           Positioned.fill(
             child: Container(
-              color: Colors.black.withOpacity(0.18),
+              color: Colors.black,
             ),
           ),
 
@@ -165,10 +165,10 @@ class _FrostedInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.8),
+        color: Colors.white,
         borderRadius: BorderRadius.circular(20),
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
       child: Row(
         children: [
           Expanded(
@@ -179,7 +179,7 @@ class _FrostedInput extends StatelessWidget {
                 border: InputBorder.none,
                 isDense: true,
               ),
-              style: const TextStyle(fontSize: 13),
+              style: const TextStyle(fontSize: 16),
             ),
           ),
           Icon(
