@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'discoverflower_screen.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -10,7 +11,6 @@ class WelcomePage extends StatelessWidget {
         width: double.infinity,
         height: double.infinity,
 
-        // ONLY background image
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/Background.image.png"),
@@ -21,7 +21,7 @@ class WelcomePage extends StatelessWidget {
         child: SafeArea(
           child: Stack(
             children: [
-              // top-left arrow
+              // top-left arrow (currently does nothing)
               Padding(
                 padding: const EdgeInsets.all(16),
                 child: Align(
@@ -30,7 +30,7 @@ class WelcomePage extends StatelessWidget {
                     icon: const Icon(Icons.arrow_back_ios_new_rounded),
                     color: Colors.black87,
                     onPressed: () {
-                      // later: Navigator.pop(context);
+                      // Keep empty or Navigator.pop(context);
                     },
                   ),
                 ),
@@ -45,7 +45,7 @@ class WelcomePage extends StatelessWidget {
                     vertical: 28,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.96),
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(32),
                     boxShadow: [
                       BoxShadow(
@@ -60,12 +60,11 @@ class WelcomePage extends StatelessWidget {
                     children: [
                       const SizedBox(height: 8),
 
-                      // title
                       const Text(
                         "Welcome to\nFlower Delivery",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: 24,
+                          fontSize: 30,
                           fontWeight: FontWeight.w800,
                           color: Colors.black87,
                           height: 1.2,
@@ -78,7 +77,7 @@ class WelcomePage extends StatelessWidget {
                         "Send fresh flowers to your loved ones\nanytime, anywhere.",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: 13,
+                          fontSize: 15,
                           color: Colors.black54,
                           height: 1.4,
                         ),
@@ -86,7 +85,6 @@ class WelcomePage extends StatelessWidget {
 
                       const SizedBox(height: 22),
 
-                      // bike illustration
                       TweenAnimationBuilder<double>(
                         tween: Tween(begin: 0.95, end: 1),
                         duration: const Duration(milliseconds: 600),
@@ -105,16 +103,22 @@ class WelcomePage extends StatelessWidget {
 
                       const SizedBox(height: 24),
 
-                      // Get Started button
+                      // Get Started → DiscoverFlowersPage
                       GestureDetector(
                         onTap: () {
-                          // TODO: go to DiscoverBeautifulFlowers page
-                          // Navigator.push(...);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const DiscoverFlowersPage(),
+                            ),
+                          );
                         },
                         child: Container(
                           width: double.infinity,
                           padding: const EdgeInsets.symmetric(
-                              vertical: 14, horizontal: 24),
+                            vertical: 14,
+                            horizontal: 24,
+                          ),
                           decoration: BoxDecoration(
                             gradient: const LinearGradient(
                               colors: [
@@ -136,7 +140,7 @@ class WelcomePage extends StatelessWidget {
                               "Get Started",
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 17,
+                                fontSize: 20,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -146,11 +150,10 @@ class WelcomePage extends StatelessWidget {
 
                       const SizedBox(height: 18),
 
-                      // page indicator dots
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: const [
-                          _PageDot(isActive: true),  // first screen
+                          _PageDot(isActive: true),
                           SizedBox(width: 6),
                           _PageDot(isActive: false),
                           SizedBox(width: 6),
@@ -180,8 +183,9 @@ class _PageDot extends StatelessWidget {
       height: 7,
       width: isActive ? 18 : 7,
       decoration: BoxDecoration(
-        color:
-            isActive ? Colors.pinkAccent : Colors.pinkAccent.withOpacity(0.25),
+        color: isActive
+            ? Colors.pinkAccent
+            : Colors.pinkAccent.withOpacity(0.25),
         borderRadius: BorderRadius.circular(10),
       ),
     );

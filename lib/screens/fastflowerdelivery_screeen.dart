@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flower_delivery_app/screens/loginpage_screen.dart';
 
 class FastDeliveryPage extends StatelessWidget {
   const FastDeliveryPage({super.key});
@@ -9,18 +10,15 @@ class FastDeliveryPage extends StatelessWidget {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/Background.image.png"),
             fit: BoxFit.cover,
           ),
         ),
-
         child: SafeArea(
           child: Stack(
             children: [
-              // Top-left back button
               Padding(
                 padding: const EdgeInsets.all(16),
                 child: Align(
@@ -35,7 +33,6 @@ class FastDeliveryPage extends StatelessWidget {
                 ),
               ),
 
-              // Center Card
               Center(
                 child: Container(
                   width: 320,
@@ -44,7 +41,7 @@ class FastDeliveryPage extends StatelessWidget {
                     vertical: 28,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.white, // solid white card
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(32),
                     boxShadow: [
                       BoxShadow(
@@ -54,7 +51,6 @@ class FastDeliveryPage extends StatelessWidget {
                       ),
                     ],
                   ),
-
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -85,7 +81,6 @@ class FastDeliveryPage extends StatelessWidget {
 
                       const SizedBox(height: 20),
 
-                      // Delivery scooter image
                       TweenAnimationBuilder<double>(
                         tween: Tween(begin: 0.95, end: 1),
                         duration: const Duration(milliseconds: 600),
@@ -97,17 +92,22 @@ class FastDeliveryPage extends StatelessWidget {
                           );
                         },
                         child: Image.asset(
-                          "assets/images/image5.jpg", // your delivery image
+                          "assets/images/image5.jpg",
                           height: 170,
                         ),
                       ),
 
                       const SizedBox(height: 26),
 
-                      // Get Started button
+                      // Get Started → LoginPage
                       GestureDetector(
                         onTap: () {
-                          // TODO: navigate to next or home
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const LoginPage(),
+                            ),
+                          );
                         },
                         child: Container(
                           width: double.infinity,
@@ -143,7 +143,6 @@ class FastDeliveryPage extends StatelessWidget {
 
                       const SizedBox(height: 12),
 
-                      // Page indicator — third dot active
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: const [
@@ -151,7 +150,7 @@ class FastDeliveryPage extends StatelessWidget {
                           SizedBox(width: 6),
                           _PageDot(isActive: false),
                           SizedBox(width: 6),
-                          _PageDot(isActive: true), 
+                          _PageDot(isActive: true),
                         ],
                       ),
                     ],
@@ -177,8 +176,9 @@ class _PageDot extends StatelessWidget {
       height: 7,
       width: isActive ? 18 : 7,
       decoration: BoxDecoration(
-        color:
-            isActive ? Colors.pinkAccent : Colors.pinkAccent.withOpacity(0.25),
+        color: isActive
+            ? Colors.pinkAccent
+            : Colors.pinkAccent.withOpacity(0.25),
         borderRadius: BorderRadius.circular(10),
       ),
     );

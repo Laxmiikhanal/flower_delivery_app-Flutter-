@@ -132,42 +132,55 @@ class HomePage extends StatelessWidget {
               ),
 
               const SizedBox(height: 24),
+// ─── FLOWERS SECTION ──────────────────────────────────────
+const Text(
+  "Flowers",
+  style: TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w700,
+  ),
+),
 
-              // FLOWERS SECTION
-              const Text(
-                "Flowers",
-                style:
-                    TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
-              ),
+const SizedBox(height: 12),
 
-              const SizedBox(height: 12),
+// First row
+Row(
+  children: const [
+    Expanded(
+      child: _CategoryCard(
+        title: "Flowers",
+        imagePath: "assets/images/whiterose.jpg",
+      ),
+    ),
+    SizedBox(width: 12),
+    Expanded(
+      child: _CategoryCard(
+        title: "Bouquet",
+        imagePath: "assets/images/imageflower.jpg",
+      ),
+    ),
+  ],
+),
 
-              Row(
-                children: const [
-                  Expanded(
-                    child: _CategoryCard(
-                      title: "Flowers",
-                      imagePath: "assets/images/image4.jpg",
-                    ),
-                  ),
-                  SizedBox(width: 12),
-                  Expanded(
-                    child: _CategoryCard(
-                      title: "Bouquet",
-                      imagePath: "assets/images/imageflower.jpg",
-                    ),
-                  ),
-                  Column(
-                    children: const [
-                      SizedBox(height: 12),
-                      _CategoryCard(
-                        title: "Plants",
-                        imagePath: "assets/images/plant.jpg",
-                      ),
-                    ],
-                  )
-                ],
-              ),
+const SizedBox(height: 12),
+
+// Second row — Wedding package
+Row(
+  children: const [
+    Expanded(
+      child: _CategoryCard(
+        title: "WeddingPackages",
+        imagePath: "assets/images/wedding.jpg",
+      ),
+    ),
+  ],
+),
+
+              
+                    
+                  
+                
+              
             ],
           ),
         ),
