@@ -147,7 +147,7 @@ class HomePage extends StatelessWidget {
                   Expanded(
                     child: _CategoryCard(
                       title: "Flowers",
-                      imagePath: "assets/images/image8.jpg",
+                      imagePath: "assets/images/image4.jpg",
                     ),
                   ),
                   SizedBox(width: 12),
@@ -157,6 +157,15 @@ class HomePage extends StatelessWidget {
                       imagePath: "assets/images/imageflower.jpg",
                     ),
                   ),
+                  Column(
+                    children: const [
+                      SizedBox(height: 12),
+                      _CategoryCard(
+                        title: "Plants",
+                        imagePath: "assets/images/plant.jpg",
+                      ),
+                    ],
+                  )
                 ],
               ),
             ],
