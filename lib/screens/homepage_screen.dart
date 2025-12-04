@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
                   const Text(
                     "BLOSSOM",
                     style: TextStyle(
-                      fontSize: 26,
+                      fontSize: 30,
                       fontWeight: FontWeight.w800,
                     ),
                   ),
@@ -100,7 +100,7 @@ class HomePage extends StatelessWidget {
               const Text(
                 "Offers",
                 style:
-                    TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+                    TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
               ),
 
               const SizedBox(height: 12),
@@ -119,13 +119,13 @@ class HomePage extends StatelessWidget {
                     _OfferCard(
                       title: "Sunflower Sale",
                       subtitle: "Brighten your day!",
-                      imagePath: "assets/images/sunflower.jpg",
+                      imagePath: "assets/images/sunflowerrrr.jpg",
                     ),
                     SizedBox(width: 12),
                     _OfferCard(
                       title: "Exclusive",
                       subtitle: "Unique bouquets",
-                      imagePath: "assets/images/imageflo.jpg",
+                      imagePath: "assets/images/imageflower.jpg",
                     ),
                   ],
                 ),
@@ -147,14 +147,14 @@ class HomePage extends StatelessWidget {
                   Expanded(
                     child: _CategoryCard(
                       title: "Flowers",
-                      imagePath: "assets/images/image5.jpg",
+                      imagePath: "assets/images/imageflow.jpg",
                     ),
                   ),
                   SizedBox(width: 12),
                   Expanded(
                     child: _CategoryCard(
                       title: "Bouquet",
-                      imagePath: "assets/images/flowers.jpg",
+                      imagePath: "assets/images/imageflower.jpg",
                     ),
                   ),
                 ],
