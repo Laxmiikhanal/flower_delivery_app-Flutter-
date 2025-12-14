@@ -113,7 +113,7 @@ class DiscoverFlowersPage extends StatelessWidget {
                           );
                         },
                         child: Image.asset(
-                          "assets/images/imageimage.jpg", 
+                          "assets/images/image0.jpg", 
                           height: 170,
                         ),
                       ),
@@ -154,7 +154,7 @@ class DiscoverFlowersPage extends StatelessWidget {
                               "Get Started",
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 17,
+                                fontSize: 20,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -169,7 +169,7 @@ class DiscoverFlowersPage extends StatelessWidget {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.black45,
-                          fontSize: 11,
+                          fontSize: 15,
                         ),
                       ),
 

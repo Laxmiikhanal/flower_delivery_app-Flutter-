@@ -1,6 +1,7 @@
 // lib/screens/loginpage_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flower_delivery_app/screens/registerpage_screen.dart';
+import 'package:flower_delivery_app/screens/homepage_screen.dart'; // 👈 ADD THIS
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -28,11 +29,13 @@ class LoginPage extends StatelessWidget {
           SafeArea(
             child: Center(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
                 child: Container(
                   width: 330,
                   height: 450,
-                  padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 24),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 22, vertical: 24),
                   decoration: BoxDecoration(
                     color: Colors.white.withOpacity(0.72),
                     borderRadius: BorderRadius.circular(28),
@@ -70,14 +73,20 @@ class LoginPage extends StatelessWidget {
 
                       const SizedBox(height: 28),
 
-                      // LOGIN BUTTON
+                      // LOGIN BUTTON → HomePage
                       GestureDetector(
                         onTap: () {
-                          // TODO: navigate to home screen
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const HomePage(),
+                            ),
+                          );
                         },
                         child: Container(
                           width: double.infinity,
-                          padding: const EdgeInsets.symmetric(vertical: 13),
+                          padding:
+                              const EdgeInsets.symmetric(vertical: 13),
                           decoration: BoxDecoration(
                             gradient: const LinearGradient(
                               colors: [
@@ -158,7 +167,6 @@ class LoginPage extends StatelessWidget {
   }
 }
 
-
 /// --------------------------
 /// CUSTOM TEXT FIELD WIDGET
 /// --------------------------
@@ -182,13 +190,10 @@ class _FrostedInput extends StatelessWidget {
         color: Colors.white.withOpacity(0.85),
         borderRadius: BorderRadius.circular(26),
       ),
-
-      // 🔥 Bigger input height
       padding: const EdgeInsets.symmetric(
         horizontal: 18,
-        vertical: 16, // <— Increase or decrease here
+        vertical: 16,
       ),
-
       child: Row(
         children: [
           Expanded(
@@ -204,10 +209,9 @@ class _FrostedInput extends StatelessWidget {
               ),
             ),
           ),
-
           Icon(
             icon,
-            size: 22, // bigger icon
+            size: 22,
             color: Colors.black54,
           ),
         ],

@@ -10,7 +10,6 @@ class WelcomePage extends StatelessWidget {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/Background.image.png"),

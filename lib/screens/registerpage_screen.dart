@@ -17,10 +17,10 @@ class RegisterPage extends StatelessWidget {
             ),
           ),
 
-          // OVERLAY
+          // OVERLAY (FIXED: NOT full black)
           Positioned.fill(
             child: Container(
-              color: Colors.black,
+              color: Colors.black.withOpacity(0.18), // FIXED HERE
             ),
           ),
 
@@ -36,6 +36,7 @@ class RegisterPage extends StatelessWidget {
                   color: Colors.white.withOpacity(0.72),
                   borderRadius: BorderRadius.circular(28),
                 ),
+
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -71,11 +72,13 @@ class RegisterPage extends StatelessWidget {
                       icon: Icons.visibility_off_outlined,
                       obscure: true,
                     ),
+
                     const SizedBox(height: 18),
 
+                    // REGISTER BUTTON
                     GestureDetector(
                       onTap: () {
-                        // TODO: handle register
+                        // TODO: handle registration logic
                       },
                       child: Container(
                         width: double.infinity,
@@ -95,7 +98,7 @@ class RegisterPage extends StatelessWidget {
                             BoxShadow(
                               color: Colors.pinkAccent.withOpacity(0.45),
                               blurRadius: 18,
-                              offset: const Offset(0, 10),
+                              offset: Offset(0, 10),
                             ),
                           ],
                         ),
@@ -114,9 +117,10 @@ class RegisterPage extends StatelessWidget {
 
                     const SizedBox(height: 14),
 
+                    // BACK TO LOGIN
                     GestureDetector(
                       onTap: () {
-                        Navigator.pop(context); // back to LoginPage
+                        Navigator.pop(context);
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -149,6 +153,9 @@ class RegisterPage extends StatelessWidget {
   }
 }
 
+// -----------------------------
+// CUSTOM INPUT FIELD WIDGET
+// -----------------------------
 class _FrostedInput extends StatelessWidget {
   final String hintText;
   final IconData icon;
