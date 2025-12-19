@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../fastflowerdelivery_screeen.dart'; // make sure this file exists and has FastDeliveryPage
+import '../fastflowerdelivery_screeen.dart';
 
 class DiscoverFlowersPage extends StatelessWidget {
   const DiscoverFlowersPage({super.key});
@@ -21,9 +21,11 @@ class DiscoverFlowersPage extends StatelessWidget {
             children: [
               // Top bar (back + skip)
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: Row(
                   children: [
+                    // Back button
                     Container(
                       decoration: BoxDecoration(
                         color: Colors.white.withOpacity(0.7),
@@ -35,15 +37,15 @@ class DiscoverFlowersPage extends StatelessWidget {
                           size: 18,
                         ),
                         color: Colors.pinkAccent,
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
+                        onPressed: () => Navigator.pop(context),
                       ),
                     ),
+
                     const Spacer(),
+
+                    // Skip button (FIXED: Added text)
                     TextButton(
                       onPressed: () {
-                        // Skip directly to FastDeliveryPage
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -54,7 +56,8 @@ class DiscoverFlowersPage extends StatelessWidget {
                       child: const Text(
                         "Skip",
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.pinkAccent,
+                          fontSize: 16,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -67,10 +70,8 @@ class DiscoverFlowersPage extends StatelessWidget {
               Center(
                 child: Container(
                   width: 320,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 26,
-                    vertical: 28,
-                  ),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 26, vertical: 28),
                   decoration: BoxDecoration(
                     color: Colors.white.withOpacity(0.95),
                     borderRadius: BorderRadius.circular(32),
@@ -87,7 +88,6 @@ class DiscoverFlowersPage extends StatelessWidget {
                     children: [
                       const SizedBox(height: 8),
 
-                      // 🔥 Title only (label removed)
                       const Text(
                         "Discover\nBeautiful Flowers",
                         textAlign: TextAlign.center,
@@ -101,7 +101,7 @@ class DiscoverFlowersPage extends StatelessWidget {
 
                       const SizedBox(height: 22),
 
-                      // Flower illustration
+        
                       TweenAnimationBuilder<double>(
                         tween: Tween(begin: 0.95, end: 1),
                         duration: const Duration(milliseconds: 600),
@@ -113,14 +113,14 @@ class DiscoverFlowersPage extends StatelessWidget {
                           );
                         },
                         child: Image.asset(
-                          "assets/images/image0.jpg", 
+                          "assets/images/image0.jpg",
                           height: 170,
                         ),
                       ),
 
                       const SizedBox(height: 24),
 
-                      // Get Started → FastDeliveryPage
+                      // Get Started -> FastDeliveryPage
                       GestureDetector(
                         onTap: () {
                           Navigator.push(
@@ -208,8 +208,9 @@ class _PageDot extends StatelessWidget {
       height: 7,
       width: isActive ? 18 : 7,
       decoration: BoxDecoration(
-        color:
-            isActive ? Colors.pinkAccent : Colors.pinkAccent.withOpacity(0.25),
+        color: isActive
+            ? Colors.pinkAccent
+            : Colors.pinkAccent.withOpacity(0.25),
         borderRadius: BorderRadius.circular(10),
       ),
     );
