@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'discoverflower_screen.dart';
+import 'package:flower_delivery_app/screens/button_screens/Discoverflower_screen.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -16,26 +16,24 @@ class WelcomePage extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-
         child: SafeArea(
           child: Stack(
             children: [
-              // top-left arrow (currently does nothing)
+              // BACK ARROW
               Padding(
                 padding: const EdgeInsets.all(16),
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: IconButton(
                     icon: const Icon(Icons.arrow_back_ios_new_rounded),
-                    color: Colors.black87,
                     onPressed: () {
-                      // Keep empty or Navigator.pop(context);
+                      Navigator.pop(context);
                     },
                   ),
                 ),
               ),
 
-              // center card
+              // CENTER CARD
               Center(
                 child: Container(
                   width: 320,
@@ -57,15 +55,12 @@ class WelcomePage extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const SizedBox(height: 8),
-
                       const Text(
                         "Welcome to\nFlower Delivery",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.w800,
-                          color: Colors.black87,
                           height: 1.2,
                         ),
                       ),
@@ -78,34 +73,22 @@ class WelcomePage extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 15,
                           color: Colors.black54,
-                          height: 1.4,
                         ),
                       ),
 
                       const SizedBox(height: 22),
 
-                      TweenAnimationBuilder<double>(
-                        tween: Tween(begin: 0.95, end: 1),
-                        duration: const Duration(milliseconds: 600),
-                        curve: Curves.easeOutBack,
-                        builder: (context, value, child) {
-                          return Transform.scale(
-                            scale: value,
-                            child: child,
-                          );
-                        },
-                        child: Image.asset(
-                          "assets/images/flowerbike.image3.jpg",
-                          height: 170,
-                        ),
+                      Image.asset(
+                        "assets/images/flowerbike.image3.jpg",
+                        height: 170,
                       ),
 
                       const SizedBox(height: 24),
 
-                      // Get Started → DiscoverFlowersPage
+                      // ✅ FIXED NAVIGATION
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                               builder: (_) => const DiscoverFlowersPage(),
@@ -114,10 +97,7 @@ class WelcomePage extends StatelessWidget {
                         },
                         child: Container(
                           width: double.infinity,
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 14,
-                            horizontal: 24,
-                          ),
+                          padding: const EdgeInsets.symmetric(vertical: 14),
                           decoration: BoxDecoration(
                             gradient: const LinearGradient(
                               colors: [
@@ -126,13 +106,6 @@ class WelcomePage extends StatelessWidget {
                               ],
                             ),
                             borderRadius: BorderRadius.circular(30),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.pinkAccent.withOpacity(0.45),
-                                blurRadius: 18,
-                                offset: const Offset(0, 10),
-                              ),
-                            ],
                           ),
                           child: const Center(
                             child: Text(
@@ -182,9 +155,8 @@ class _PageDot extends StatelessWidget {
       height: 7,
       width: isActive ? 18 : 7,
       decoration: BoxDecoration(
-        color: isActive
-            ? Colors.pinkAccent
-            : Colors.pinkAccent.withOpacity(0.25),
+        color:
+            isActive ? Colors.pinkAccent : Colors.pinkAccent.withOpacity(0.25),
         borderRadius: BorderRadius.circular(10),
       ),
     );

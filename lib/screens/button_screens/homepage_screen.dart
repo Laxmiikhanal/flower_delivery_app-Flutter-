@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flower_delivery_app/screens/button_screens/Notifications_Screen.dart';
+import 'package:flower_delivery_app/screens/Notifications_Screen.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

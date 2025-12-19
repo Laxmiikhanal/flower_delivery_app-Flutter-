@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'fastflowerdelivery_screeen.dart'; // make sure this file exists and has FastDeliveryPage
+import '../fastflowerdelivery_screeen.dart'; // make sure this file exists and has FastDeliveryPage
 
 class DiscoverFlowersPage extends StatelessWidget {
   const DiscoverFlowersPage({super.key});

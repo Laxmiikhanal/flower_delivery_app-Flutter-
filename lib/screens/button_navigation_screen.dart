@@ -1,8 +1,9 @@
-import 'package:flower_delivery_app/screens/button_screens/Notifications_Screen.dart';
+import 'package:flutter/material.dart';
+
 import 'package:flower_delivery_app/screens/button_screens/homepage_screen.dart';
 import 'package:flower_delivery_app/screens/button_screens/mycart_screen.dart';
 import 'package:flower_delivery_app/screens/button_screens/profile_screen.dart';
-import 'package:flutter/material.dart';
+import 'package:flower_delivery_app/screens/button_screens/Discoverflower_screen.dart';
 
 class ButtonNavigationScreen extends StatefulWidget {
   const ButtonNavigationScreen({super.key});
@@ -15,10 +16,10 @@ class _ButtonNavigationScreenState extends State<ButtonNavigationScreen> {
   int _index = 0;
 
   final List<Widget> _pages = const [
-    HomePage(),
-    MycartScreen(),
-    NotificationsScreen(),
-    ProfileScreen(),
+    HomePage(),             
+    MycartScreen(),         
+    DiscoverFlowersPage(),
+    ProfileScreen(),        
   ];
 
   @override
@@ -31,15 +32,25 @@ class _ButtonNavigationScreenState extends State<ButtonNavigationScreen> {
         selectedItemColor: Colors.pinkAccent,
         unselectedItemColor: Colors.grey,
         onTap: (value) {
-          setState(() {
-            _index = value;
-          });
+          setState(() => _index = value);
         },
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: "Cart"),
-          BottomNavigationBarItem(icon: Icon(Icons.local_offer), label: "Offer"),
-          BottomNavigationBarItem(icon: Icon(Icons.menu), label: "Menu"),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_rounded),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart_outlined),
+            label: "Cart",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.local_offer_outlined),
+            label: "Offer",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.menu_rounded),
+            label: "Menu",
+          ),
         ],
       ),
     );
