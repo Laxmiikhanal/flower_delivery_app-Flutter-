@@ -1,15 +1,72 @@
-// lib/screens/registerpage_screen.dart
 import 'package:flutter/material.dart';
 
-class RegisterPage extends StatelessWidget {
+import 'package:flower_delivery_app/features/auth/data/datasources/auth_local_datasource.dart';
+import 'package:flower_delivery_app/features/auth/data/repositories/auth_repository.dart';
+
+class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
+
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
+  final _fullNameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  final AuthRepository _authRepo = AuthRepository(AuthLocalDataSource());
+
+  bool _isLoading = false;
+
+  @override
+  void dispose() {
+    _fullNameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _handleRegister() async {
+    final fullName = _fullNameController.text.trim();
+    final email = _emailController.text.trim();
+    final password = _passwordController.text;
+
+    if (fullName.isEmpty || email.isEmpty || password.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Please fill all fields")),
+      );
+      return;
+    }
+
+    setState(() => _isLoading = true);
+
+    try {
+      await _authRepo.signUp(fullName: fullName, email: email, password: password);
+
+      if (!mounted) return;
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Registered successfully. Please login.")),
+      );
+
+      Navigator.pop(context); // back to login
+    } catch (e) {
+      if (!mounted) return;
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(e.toString().replaceFirst("Exception: ", ""))),
+      );
+    } finally {
+      if (mounted) setState(() => _isLoading = false);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
-          // BACKGROUND IMAGE
           Positioned.fill(
             child: Image.asset(
               "assets/images/image6.png",
@@ -17,10 +74,9 @@ class RegisterPage extends StatelessWidget {
             ),
           ),
 
-          // OVERLAY (FIXED: NOT full black)
           Positioned.fill(
             child: Container(
-              color: Colors.black.withOpacity(0.18), // FIXED HERE
+              color: Colors.black.withOpacity(0.18),
             ),
           ),
 
@@ -36,7 +92,6 @@ class RegisterPage extends StatelessWidget {
                   color: Colors.white.withOpacity(0.72),
                   borderRadius: BorderRadius.circular(28),
                 ),
-
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -53,21 +108,24 @@ class RegisterPage extends StatelessWidget {
 
                     const SizedBox(height: 20),
 
-                    const _FrostedInput(
+                    _FrostedInput(
+                      controller: _fullNameController,
                       hintText: "Full name",
                       icon: Icons.person_outline,
                       obscure: false,
                     ),
                     const SizedBox(height: 12),
 
-                    const _FrostedInput(
+                    _FrostedInput(
+                      controller: _emailController,
                       hintText: "Email address",
                       icon: Icons.mail_outline,
                       obscure: false,
                     ),
                     const SizedBox(height: 12),
 
-                    const _FrostedInput(
+                    _FrostedInput(
+                      controller: _passwordController,
                       hintText: "Password",
                       icon: Icons.visibility_off_outlined,
                       obscure: true,
@@ -75,11 +133,8 @@ class RegisterPage extends StatelessWidget {
 
                     const SizedBox(height: 18),
 
-                    // REGISTER BUTTON
                     GestureDetector(
-                      onTap: () {
-                        // TODO: handle registration logic
-                      },
+                      onTap: _isLoading ? null : _handleRegister,
                       child: Container(
                         width: double.infinity,
                         padding: const EdgeInsets.symmetric(
@@ -98,26 +153,34 @@ class RegisterPage extends StatelessWidget {
                             BoxShadow(
                               color: Colors.pinkAccent.withOpacity(0.45),
                               blurRadius: 18,
-                              offset: Offset(0, 10),
+                              offset: const Offset(0, 10),
                             ),
                           ],
                         ),
-                        child: const Center(
-                          child: Text(
-                            "Register",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
+                        child: Center(
+                          child: _isLoading
+                              ? const SizedBox(
+                                  height: 22,
+                                  width: 22,
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2.5,
+                                    color: Colors.white,
+                                  ),
+                                )
+                              : const Text(
+                                  "Register",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
                         ),
                       ),
                     ),
 
                     const SizedBox(height: 14),
 
-                    // BACK TO LOGIN
                     GestureDetector(
                       onTap: () {
                         Navigator.pop(context);
@@ -157,11 +220,13 @@ class RegisterPage extends StatelessWidget {
 // CUSTOM INPUT FIELD WIDGET
 // -----------------------------
 class _FrostedInput extends StatelessWidget {
+  final TextEditingController controller;
   final String hintText;
   final IconData icon;
   final bool obscure;
 
   const _FrostedInput({
+    required this.controller,
     required this.hintText,
     required this.icon,
     required this.obscure,
@@ -180,6 +245,7 @@ class _FrostedInput extends StatelessWidget {
         children: [
           Expanded(
             child: TextField(
+              controller: controller,
               obscureText: obscure,
               decoration: InputDecoration(
                 hintText: hintText,
